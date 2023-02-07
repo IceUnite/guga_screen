@@ -8,7 +8,10 @@ class AuthPageState with _$AuthPageState {
   const factory AuthPageState({
     required String userName,
     required String phoneNumber,
-  }) = _AuthPageState;
+    required bool isActiveBtn,
+}) = _AuthPageState;
+
+
 }
 
 final authPageStateProvider =
@@ -22,16 +25,22 @@ class AuthPageStateHolder extends StateNotifier<AuthPageState> {
     const AuthPageState(
       userName: '',
       phoneNumber: '',
+      isActiveBtn: false,
     ),
   );
 
 
   String get phoneNumber => state.phoneNumber;
   String get userName => state.userName;
+  bool get  isActiveBtn => state.isActiveBtn;
 
 
   void setPhoneNumber(String phone, String name) => state = state.copyWith(
     phoneNumber: phone,
     userName: name,
+  );
+
+  void setValueBtn(bool value) => state = state.copyWith(
+    isActiveBtn: value,
   );
 }

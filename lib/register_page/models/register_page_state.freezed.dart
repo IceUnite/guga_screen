@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthPageState {
   String get userName => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
+  bool get isActiveBtn => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthPageStateCopyWith<AuthPageState> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $AuthPageStateCopyWith<$Res> {
           AuthPageState value, $Res Function(AuthPageState) then) =
       _$AuthPageStateCopyWithImpl<$Res, AuthPageState>;
   @useResult
-  $Res call({String userName, String phoneNumber});
+  $Res call({String userName, String phoneNumber, bool isActiveBtn});
 }
 
 /// @nodoc
@@ -48,6 +49,7 @@ class _$AuthPageStateCopyWithImpl<$Res, $Val extends AuthPageState>
   $Res call({
     Object? userName = null,
     Object? phoneNumber = null,
+    Object? isActiveBtn = null,
   }) {
     return _then(_value.copyWith(
       userName: null == userName
@@ -58,6 +60,10 @@ class _$AuthPageStateCopyWithImpl<$Res, $Val extends AuthPageState>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      isActiveBtn: null == isActiveBtn
+          ? _value.isActiveBtn
+          : isActiveBtn // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -70,7 +76,7 @@ abstract class _$$_AuthPageStateCopyWith<$Res>
       __$$_AuthPageStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userName, String phoneNumber});
+  $Res call({String userName, String phoneNumber, bool isActiveBtn});
 }
 
 /// @nodoc
@@ -86,6 +92,7 @@ class __$$_AuthPageStateCopyWithImpl<$Res>
   $Res call({
     Object? userName = null,
     Object? phoneNumber = null,
+    Object? isActiveBtn = null,
   }) {
     return _then(_$_AuthPageState(
       userName: null == userName
@@ -96,6 +103,10 @@ class __$$_AuthPageStateCopyWithImpl<$Res>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      isActiveBtn: null == isActiveBtn
+          ? _value.isActiveBtn
+          : isActiveBtn // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -103,16 +114,21 @@ class __$$_AuthPageStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AuthPageState implements _AuthPageState {
-  const _$_AuthPageState({required this.userName, required this.phoneNumber});
+  const _$_AuthPageState(
+      {required this.userName,
+      required this.phoneNumber,
+      required this.isActiveBtn});
 
   @override
   final String userName;
   @override
   final String phoneNumber;
+  @override
+  final bool isActiveBtn;
 
   @override
   String toString() {
-    return 'AuthPageState(userName: $userName, phoneNumber: $phoneNumber)';
+    return 'AuthPageState(userName: $userName, phoneNumber: $phoneNumber, isActiveBtn: $isActiveBtn)';
   }
 
   @override
@@ -123,11 +139,14 @@ class _$_AuthPageState implements _AuthPageState {
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
             (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.isActiveBtn, isActiveBtn) ||
+                other.isActiveBtn == isActiveBtn));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userName, phoneNumber);
+  int get hashCode =>
+      Object.hash(runtimeType, userName, phoneNumber, isActiveBtn);
 
   @JsonKey(ignore: true)
   @override
@@ -139,12 +158,15 @@ class _$_AuthPageState implements _AuthPageState {
 abstract class _AuthPageState implements AuthPageState {
   const factory _AuthPageState(
       {required final String userName,
-      required final String phoneNumber}) = _$_AuthPageState;
+      required final String phoneNumber,
+      required final bool isActiveBtn}) = _$_AuthPageState;
 
   @override
   String get userName;
   @override
   String get phoneNumber;
+  @override
+  bool get isActiveBtn;
   @override
   @JsonKey(ignore: true)
   _$$_AuthPageStateCopyWith<_$_AuthPageState> get copyWith =>

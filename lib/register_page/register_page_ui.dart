@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'manager.dart';
-
-
+import 'models/register_page_state.dart';
 
 class RegisterPage extends ConsumerStatefulWidget {
   const RegisterPage({super.key});
@@ -12,28 +11,13 @@ class RegisterPage extends ConsumerStatefulWidget {
 }
 
 class _RegisterPageState extends ConsumerState<RegisterPage> {
-
-  bool isChecked = false;
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-
     final manager = ref.watch(authManagerProvider);
-
-    Color getColor(Set<MaterialState> states) {
-      const Set<MaterialState> interactiveStates = <MaterialState>{
-        MaterialState.pressed,
-        MaterialState.hovered,
-        MaterialState.focused,
-      };
-      if (states.any(interactiveStates.contains)) {
-        return Colors.blue;
-      }
-      return Colors.red;
-    }
-
+    final authPageState = ref.watch(authPageStateProvider);
 
     double screenWidth = MediaQuery.of(context).size.width;
 
@@ -69,7 +53,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
               padding: const EdgeInsets.only(left: 31, right: 30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children:  [
+                children: [
                   const Text(
                     'Ваше полное имя',
                     style: TextStyle(color: Color(0xffC5C5C5)),
@@ -85,7 +69,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                   const SizedBox(height: 30),
                 ],
               ),
-              ),
+            ),
             const SizedBox(
               height: 30,
             ),
@@ -93,7 +77,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
               padding: const EdgeInsets.only(left: 31, right: 30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children:  [
+                children: [
                   const Text(
                     'Введите номер телефона',
                     style: TextStyle(color: Color(0xffC5C5C5)),
@@ -120,12 +104,9 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                 children: [
                   Checkbox(
                     checkColor: Colors.white,
-                    fillColor: MaterialStateProperty.resolveWith(getColor),
-                    value: isChecked,
+                    value: authPageState.isActiveBtn,
                     onChanged: (bool? value) {
-                      setState(() {
-                        isChecked = value!;
-                      });
+                      manager.changeValueBtn(value!);
                     },
                   ),
                   const SizedBox(
@@ -145,9 +126,13 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                   style: ButtonStyle(
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
-                      backgroundColor:
-                          MaterialStateProperty.all(const Color(0xffFF8D23))),
-                  onPressed: () => manager.checkTextField(name: nameController.text.trim(), phone: phoneController.text.trim()),
+                      backgroundColor: authPageState.isActiveBtn
+                          ? MaterialStateProperty.all(const Color(0xffFF8D23))
+                          : MaterialStateProperty.all(const Color(0xff6e6e6e))),
+                  onPressed: () => manager.checkTextField(
+                    name: nameController.text.trim(),
+                    phone: phoneController.text.trim(),
+                  ),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),

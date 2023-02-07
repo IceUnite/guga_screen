@@ -31,5 +31,7 @@ class AuthorizationManager {
 
   void openCodePage() => navigationManager.openCodePage();
 
+  void changeValueBtn(bool value) => authPageStateHolder.setValueBtn(value);
+
 
 }

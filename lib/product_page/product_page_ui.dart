@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'constants.dart';
+import 'manager.dart';
 
 class ProductPage extends ConsumerStatefulWidget {
   const ProductPage({Key? key}) : super(key: key);
@@ -10,12 +11,16 @@ class ProductPage extends ConsumerStatefulWidget {
 }
 
 class _ProductPageState extends ConsumerState<ProductPage> {
+
   int sale = 0;
   int salecount = 0;
   int finalsale = 0;
 
   @override
   Widget build(BuildContext context) {
+
+    final manager = ref.watch(productManagerProvider);
+
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: const Color(0xffF5F5F5),
@@ -94,6 +99,8 @@ class _ProductPageState extends ConsumerState<ProductPage> {
                       ElevatedButton(
                         onPressed: () {
                           sale = teliatina;
+                          setState(() {
+                          });
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
@@ -113,6 +120,8 @@ class _ProductPageState extends ConsumerState<ProductPage> {
                       ElevatedButton(
                         onPressed: () {
                           sale = goviadina;
+                          setState(() {
+                          });
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
@@ -130,6 +139,9 @@ class _ProductPageState extends ConsumerState<ProductPage> {
                       ElevatedButton(
                         onPressed: () {
                           sale = svinina;
+                          setState(() {
+                          });
+
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(

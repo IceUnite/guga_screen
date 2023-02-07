@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return ProviderScope(
       child: MaterialApp(
         routes: navigation.routes,
-        initialRoute: AppRoutesKeys.productpage,
+        initialRoute: AppRoutesKeys.registerpage,
         onGenerateRoute: JKXRoutes.onGenerateRoute,
         navigatorKey: NavigationManager.hostNavigatorKey,
         title: 'Flutter Demo',

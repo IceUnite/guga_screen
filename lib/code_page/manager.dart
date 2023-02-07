@@ -36,5 +36,5 @@ class CodeManager {
     }
   }
 
-  void openMapPage() => navigationManager.openMapPage();
+  void openMapPage() => navigationManager.openProductPage();
 }
