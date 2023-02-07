@@ -36,11 +36,12 @@ class ProductPageStateHolder extends StateNotifier<ProductPageState> {
   void setPrice(int value) => state = state.copyWith(
     price: value,
   );
-
   void setCount(int value) => state = state.copyWith(
     count: value,
   );
   void setTotalPrice(int value) => state = state.copyWith(
     totalPrice: value,
   );
+
+
 }

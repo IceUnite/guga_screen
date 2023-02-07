@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'constants.dart';
 import 'manager.dart';
+import 'models/product_page_state.dart';
 
 class ProductPage extends ConsumerStatefulWidget {
   const ProductPage({Key? key}) : super(key: key);
@@ -12,14 +13,12 @@ class ProductPage extends ConsumerStatefulWidget {
 
 class _ProductPageState extends ConsumerState<ProductPage> {
 
-  int sale = 0;
-  int salecount = 0;
-  int finalsale = 0;
 
   @override
   Widget build(BuildContext context) {
 
     final manager = ref.watch(productManagerProvider);
+    final productPageState = ref.watch(productPageStateProvider);
 
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -36,10 +35,12 @@ class _ProductPageState extends ConsumerState<ProductPage> {
                 children: [
                   SizedBox(width: (screenWidth - 258) / 2 - 48),
                   IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.arrow_back)),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }, icon: const Icon(Icons.arrow_back)),
                   const SizedBox(width: 3),
                   Image.asset('assets/images/hinc.png'),
-                  //SizedBox(height: (screenWidth - 309)),
+
                 ],
               ),
             ),
@@ -98,9 +99,7 @@ class _ProductPageState extends ConsumerState<ProductPage> {
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          sale = teliatina;
-                          setState(() {
-                          });
+                          manager.changePrice(teliatina);
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
@@ -119,9 +118,8 @@ class _ProductPageState extends ConsumerState<ProductPage> {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          sale = goviadina;
-                          setState(() {
-                          });
+                          manager.changePrice(goviadina);
+
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
@@ -138,9 +136,7 @@ class _ProductPageState extends ConsumerState<ProductPage> {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          sale = svinina;
-                          setState(() {
-                          });
+                          manager.changePrice(svinina);
 
                         },
                         style: ButtonStyle(
@@ -165,9 +161,8 @@ class _ProductPageState extends ConsumerState<ProductPage> {
                               backgroundColor:
                                   MaterialStateProperty.all(Colors.white)),
                           onPressed: () {
-                            salecount += 1;
-                            setState(() {
-                            });
+                            manager.plus(productPageState.count);
+
 
                           },
                           child: const SizedBox(
@@ -181,13 +176,11 @@ class _ProductPageState extends ConsumerState<ProductPage> {
                        SizedBox(
                         width: 47,
                         height: 40,
-                        child: Center(child: Text(salecount.toString(), style: TextStyle(fontSize: 24),)),
+                        child: Center(child: Text(productPageState.count.toString(), style: TextStyle(fontSize: 24),)),
                       ),
                       ElevatedButton(
                           onPressed: () {
-                            salecount -= 1;
-                            setState(() {
-                            });
+                            manager.minus(productPageState.count);
                           },
                           style: ButtonStyle(
                               shadowColor:
@@ -202,7 +195,7 @@ class _ProductPageState extends ConsumerState<ProductPage> {
                                       style: TextStyle(color: Colors.black))))),
                       SizedBox(width: 50,),
                       Container(
-                        child: Center(child: Text((salecount*sale).toString(), style: TextStyle(fontSize: 20),)),
+                        child: Center(child: Text(productPageState.totalPrice.toString(), style: TextStyle(fontSize: 20),)),
                       )
                     ],
                   )
