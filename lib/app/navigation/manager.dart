@@ -17,6 +17,7 @@ class NavigationManager {
   void openCodePage() => state?.pushNamed(AppRoutesKeys.codepage);
   void openMapPage() => state?.pushNamed(AppRoutesKeys.mappage);
   void openProductPage() => state?.pushNamed(AppRoutesKeys.productpage);
+  void openBasketPage() => state?.pushNamed(AppRoutesKeys.basketpage);
 
 
 }

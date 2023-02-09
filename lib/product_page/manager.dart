@@ -1,4 +1,3 @@
-import 'package:guga_screen/product_page/product_page_ui.dart';
 import 'package:riverpod/riverpod.dart';
 import '../app/navigation/manager.dart';
 import 'models/product_page_state.dart';
@@ -18,6 +17,8 @@ class ProductManager {
     required this.productPageStateHolder,
     required this.navigationManager,
   });
+
+  void openBasketPage() => navigationManager.openBasketPage();
 
   void totalPriceChange() {
     productPageStateHolder.setTotalPrice(

@@ -197,8 +197,31 @@ class _ProductPageState extends ConsumerState<ProductPage> {
                       Container(
                         child: Center(child: Text(productPageState.totalPrice.toString(), style: TextStyle(fontSize: 20),)),
                       )
+
                     ],
-                  )
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                        backgroundColor: MaterialStateProperty.all(const Color(0xffFF8D23))),
+                    onPressed: () {
+                      manager.openBasketPage();
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      width: 220,
+                      height: 53,
+                      child: const Center(
+                        child: Text(
+                          'Корзина',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
