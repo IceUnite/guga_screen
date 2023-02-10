@@ -23,4 +23,19 @@ class BasketManager {
 
 
   void openMapPage() => navigationManager.openProductPage();
+
+  List<bool> favouriteChangeState(List<bool> isNewFavourite, int index){
+
+    isNewFavourite[index] = !isNewFavourite[index];
+    basketPageStateHolder.setSelectFavourite(isNewFavourite, index);
+    return isNewFavourite;
+
+  }
+
+  List<bool> trashChangeState(List<bool> isNewTrash, int index){
+    isNewTrash[index] = !isNewTrash[index];
+    basketPageStateHolder.setSelectTrash(isNewTrash, index);
+    return isNewTrash;
+  }
+
 }

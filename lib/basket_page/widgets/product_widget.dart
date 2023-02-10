@@ -1,20 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:guga_screen/basket_page/models/basket_page_state.dart';
 
-class ProductWidget extends StatelessWidget {
+import '../manager.dart';
+
+class ProductWidget extends ConsumerStatefulWidget {
   String imageAsset;
   String productName;
   String productTitle;
   String price;
+  int index;
+  List<bool> isFavourite;
+  List<bool> isTrash;
 
-  ProductWidget(
-    this.imageAsset,
-    this.productName,
-    this.productTitle,
-    this.price,
-  );
+  ProductWidget({
+    required this.imageAsset,
+    required this.productName,
+    required this.productTitle,
+    required this.price,
+    required this.index,
+    required this.isFavourite,
+    required this.isTrash
+  });
 
   @override
+  ConsumerState<ProductWidget> createState() => _ProductWidgetState();
+}
+
+class _ProductWidgetState extends ConsumerState<ProductWidget> {
+  @override
   Widget build(BuildContext context) {
+    //print(widget.index);
+    final manager = ref.watch(basketManagerProvider);
+    final basketPageState = ref.watch(basketPageStateProvider);
     return Container(
       height: 160,
       decoration: const BoxDecoration(),
@@ -27,7 +45,7 @@ class ProductWidget extends StatelessWidget {
               children: [
                 Padding(
                     padding: const EdgeInsets.only(right: 20, top: 15),
-                    child: Image.asset(imageAsset)),
+                    child: Image.asset(widget.imageAsset)),
                 Container(
                   margin: const EdgeInsets.only(top: 15, bottom: 16),
                   child: Column(
@@ -36,7 +54,7 @@ class ProductWidget extends StatelessWidget {
                         width: 130,
                         height: 40,
                         child: Text(
-                          productName,
+                          widget.productName,
                           maxLines: 2,
                           style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w600),
@@ -49,7 +67,7 @@ class ProductWidget extends StatelessWidget {
                         width: 130,
                         height: 29,
                         child: Text(
-                          productTitle,
+                          widget.productTitle,
                           maxLines: 2,
                           style: const TextStyle(
                               fontSize: 9,
@@ -64,7 +82,7 @@ class ProductWidget extends StatelessWidget {
                         width: 130,
                         height: 29,
                         child: Text(
-                          price,
+                          widget.price,
                           maxLines: 2,
                           style: const TextStyle(
                               fontSize: 15,
@@ -79,9 +97,31 @@ class ProductWidget extends StatelessWidget {
                   width: 60,
                   height: 20,
                   child: Row(
-                    children:  [
-                      SizedBox(width: 30, child: IconButton(splashRadius: 14,onPressed: (){}, icon: Icon(Icons.restore_from_trash_outlined,))),
-                      SizedBox(width: 30, child: IconButton(splashRadius: 14,onPressed: (){}, icon: Icon(Icons.favorite_border_outlined,))),
+                    children: [
+                      SizedBox(
+                          width: 30,
+                          child: IconButton(
+                              splashRadius: 14,
+                              onPressed: () {
+                                widget.isFavourite = manager.favouriteChangeState(widget.isFavourite, widget.index);
+                              },
+                              icon: Icon(Icons.favorite_border_outlined,
+                                  color: basketPageState.isFavourite[widget.index] == true
+                                      ? Colors.red
+                                      : Colors.black))),
+                      SizedBox(
+                          width: 30,
+                          child: IconButton(
+                              splashRadius: 14,
+                              onPressed: () {
+                                widget.isTrash = manager.trashChangeState(widget.isTrash, widget.index);
+                              },
+                              icon:  Icon(
+                                Icons.restore_from_trash_outlined,
+                                  color: basketPageState.isTrash[widget.index] == true
+                                      ? Colors.red
+                                      : Colors.black
+                              ))),
                     ],
                   ),
                 )

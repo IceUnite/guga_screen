@@ -16,9 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$BasketPageState {
-  int get price => throw _privateConstructorUsedError;
-  int get count => throw _privateConstructorUsedError;
-  int get totalPrice => throw _privateConstructorUsedError;
+  List<bool> get isFavourite => throw _privateConstructorUsedError;
+  List<bool> get isTrash => throw _privateConstructorUsedError;
+  int get selectedIndex => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BasketPageStateCopyWith<BasketPageState> get copyWith =>
@@ -31,7 +31,7 @@ abstract class $BasketPageStateCopyWith<$Res> {
           BasketPageState value, $Res Function(BasketPageState) then) =
       _$BasketPageStateCopyWithImpl<$Res, BasketPageState>;
   @useResult
-  $Res call({int price, int count, int totalPrice});
+  $Res call({List<bool> isFavourite, List<bool> isTrash, int selectedIndex});
 }
 
 /// @nodoc
@@ -47,22 +47,22 @@ class _$BasketPageStateCopyWithImpl<$Res, $Val extends BasketPageState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? price = null,
-    Object? count = null,
-    Object? totalPrice = null,
+    Object? isFavourite = null,
+    Object? isTrash = null,
+    Object? selectedIndex = null,
   }) {
     return _then(_value.copyWith(
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as int,
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalPrice: null == totalPrice
-          ? _value.totalPrice
-          : totalPrice // ignore: cast_nullable_to_non_nullable
+      isFavourite: null == isFavourite
+          ? _value.isFavourite
+          : isFavourite // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
+      isTrash: null == isTrash
+          ? _value.isTrash
+          : isTrash // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
+      selectedIndex: null == selectedIndex
+          ? _value.selectedIndex
+          : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -76,7 +76,7 @@ abstract class _$$_BasketPageStateCopyWith<$Res>
       __$$_BasketPageStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int price, int count, int totalPrice});
+  $Res call({List<bool> isFavourite, List<bool> isTrash, int selectedIndex});
 }
 
 /// @nodoc
@@ -90,22 +90,22 @@ class __$$_BasketPageStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? price = null,
-    Object? count = null,
-    Object? totalPrice = null,
+    Object? isFavourite = null,
+    Object? isTrash = null,
+    Object? selectedIndex = null,
   }) {
     return _then(_$_BasketPageState(
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as int,
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-      totalPrice: null == totalPrice
-          ? _value.totalPrice
-          : totalPrice // ignore: cast_nullable_to_non_nullable
+      isFavourite: null == isFavourite
+          ? _value._isFavourite
+          : isFavourite // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
+      isTrash: null == isTrash
+          ? _value._isTrash
+          : isTrash // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
+      selectedIndex: null == selectedIndex
+          ? _value.selectedIndex
+          : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -115,18 +115,34 @@ class __$$_BasketPageStateCopyWithImpl<$Res>
 
 class _$_BasketPageState implements _BasketPageState {
   const _$_BasketPageState(
-      {required this.price, required this.count, required this.totalPrice});
+      {required final List<bool> isFavourite,
+      required final List<bool> isTrash,
+      required this.selectedIndex})
+      : _isFavourite = isFavourite,
+        _isTrash = isTrash;
+
+  final List<bool> _isFavourite;
+  @override
+  List<bool> get isFavourite {
+    if (_isFavourite is EqualUnmodifiableListView) return _isFavourite;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_isFavourite);
+  }
+
+  final List<bool> _isTrash;
+  @override
+  List<bool> get isTrash {
+    if (_isTrash is EqualUnmodifiableListView) return _isTrash;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_isTrash);
+  }
 
   @override
-  final int price;
-  @override
-  final int count;
-  @override
-  final int totalPrice;
+  final int selectedIndex;
 
   @override
   String toString() {
-    return 'BasketPageState(price: $price, count: $count, totalPrice: $totalPrice)';
+    return 'BasketPageState(isFavourite: $isFavourite, isTrash: $isTrash, selectedIndex: $selectedIndex)';
   }
 
   @override
@@ -134,14 +150,19 @@ class _$_BasketPageState implements _BasketPageState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_BasketPageState &&
-            (identical(other.price, price) || other.price == price) &&
-            (identical(other.count, count) || other.count == count) &&
-            (identical(other.totalPrice, totalPrice) ||
-                other.totalPrice == totalPrice));
+            const DeepCollectionEquality()
+                .equals(other._isFavourite, _isFavourite) &&
+            const DeepCollectionEquality().equals(other._isTrash, _isTrash) &&
+            (identical(other.selectedIndex, selectedIndex) ||
+                other.selectedIndex == selectedIndex));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, price, count, totalPrice);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_isFavourite),
+      const DeepCollectionEquality().hash(_isTrash),
+      selectedIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -152,16 +173,16 @@ class _$_BasketPageState implements _BasketPageState {
 
 abstract class _BasketPageState implements BasketPageState {
   const factory _BasketPageState(
-      {required final int price,
-      required final int count,
-      required final int totalPrice}) = _$_BasketPageState;
+      {required final List<bool> isFavourite,
+      required final List<bool> isTrash,
+      required final int selectedIndex}) = _$_BasketPageState;
 
   @override
-  int get price;
+  List<bool> get isFavourite;
   @override
-  int get count;
+  List<bool> get isTrash;
   @override
-  int get totalPrice;
+  int get selectedIndex;
   @override
   @JsonKey(ignore: true)
   _$$_BasketPageStateCopyWith<_$_BasketPageState> get copyWith =>
