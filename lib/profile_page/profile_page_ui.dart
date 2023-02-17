@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:guga_screen/profile_page/manager.dart';
 import 'Widgets/achievment.dart';
 import 'Widgets/profile_appbar.dart';
 
@@ -15,11 +16,12 @@ TextEditingController phoneController = TextEditingController();
 TextEditingController adressController = TextEditingController();
 
 class _ProfilePageState extends ConsumerState<ProfilePage> {
-  String Phone = '+7 4991133630';
-  String Adress = 'ул.Гоголя, 2 проезд. Дом 85';
+  // String Phone = '+7 4991133630';
+  // String Adress = 'ул.Гоголя, 2 проезд. Дом 85';
 
   @override
   Widget build(BuildContext context) {
+    final manager = ref.watch(profileManagerProvider);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: ProfileAppBar(),
@@ -73,7 +75,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
               height: 18,
               child: Center(
                 child: Text(
-                  Adress,
+                  manager.profilePageStateHolder.userAdress,
                   style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w400,
@@ -120,9 +122,14 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   SizedBox(
                     height: 30,
                     child: TextField(
+                      onSubmitted: (value){
+                        manager.changeUserPhone(Phone: value);
+                        print(manager.profilePageStateHolder.phoneNumber);
+                        },
                       controller: phoneController,
                       decoration: InputDecoration(
-                        hintText: Phone
+                        //TODO Сделать перерисовку
+                        hintText: manager.profilePageStateHolder.phoneNumber
                       ),
 
                     ),
@@ -141,8 +148,12 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   SizedBox(
                     height: 30,
                     child: TextField(
+                      onChanged: (value){
+                        manager.changeUserAdress(Adress: value);
+                        },
                       decoration: InputDecoration(
-                          hintText: Adress
+                        //TODO Сделать перерисовку
+                          hintText: manager.profilePageStateHolder.userAdress
                       ),
                       controller: adressController,
                     ),
