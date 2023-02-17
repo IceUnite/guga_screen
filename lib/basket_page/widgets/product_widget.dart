@@ -30,7 +30,6 @@ class ProductWidget extends ConsumerStatefulWidget {
 class _ProductWidgetState extends ConsumerState<ProductWidget> {
   @override
   Widget build(BuildContext context) {
-    //print(widget.index);
     final manager = ref.watch(basketManagerProvider);
     final basketPageState = ref.watch(basketPageStateProvider);
     return Container(

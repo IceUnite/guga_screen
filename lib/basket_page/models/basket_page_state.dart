@@ -34,9 +34,9 @@ class BasketPageStateHolder extends StateNotifier<BasketPageState> {
         isFavourite: isFavourite,
         selectedIndex: selectedIndex,
       );
-  void setSelectTrash(List<bool> isFavourite, int selectedIndex) =>
+  void setSelectTrash(List<bool> isTrash, int selectedIndex) =>
       state = state.copyWith(
-        isTrash: isFavourite,
+        isTrash: isTrash,
         selectedIndex: selectedIndex,
       );
 }
