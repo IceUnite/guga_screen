@@ -16,8 +16,6 @@ TextEditingController phoneController = TextEditingController();
 TextEditingController adressController = TextEditingController();
 
 class _ProfilePageState extends ConsumerState<ProfilePage> {
-  // String Phone = '+7 4991133630';
-  // String Adress = 'ул.Гоголя, 2 проезд. Дом 85';
 
   @override
   Widget build(BuildContext context) {

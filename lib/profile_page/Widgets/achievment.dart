@@ -29,7 +29,7 @@ class ProfileAchievment extends StatelessWidget {
               SizedBox(
                   height: 17.46,
                   child: Text(
-                    "Новичек",
+                    "Новичок",
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,

@@ -19,6 +19,5 @@ class NavigationManager {
   void openProductPage() => state?.pushNamed(AppRoutesKeys.productpage);
   void openBasketPage() => state?.pushNamed(AppRoutesKeys.basketpage);
   void openProfilePage() => state?.pushNamed(AppRoutesKeys.profilepage);
-
-
+  void openHomePage() => state?.pushNamed(AppRoutesKeys.homepage);
 }
