@@ -18,6 +18,7 @@ class PopularFood extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(
             height: 5,
@@ -32,15 +33,18 @@ class PopularFood extends StatelessWidget {
           ),
            Center(
             child: SizedBox(
-                width: 94,
-                height: 42,
-                child: Text(
-                  title,
-                  maxLines: 2,
-                  style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black),
+                width: 100,
+                height: 44,
+                child: Center(
+                  child: Text(
+                    title,
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black),
+                  ),
                 )),
           ),
           const SizedBox(

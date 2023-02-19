@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:guga_screen/home_page/data/popular_food_data.dart';
+import 'package:guga_screen/home_page/widgets/catalog_product.dart';
 import 'package:guga_screen/home_page/widgets/home_page_appbar.dart';
 import 'package:guga_screen/home_page/widgets/popular_food.dart';
 import 'package:guga_screen/home_page/widgets/promotion_widget.dart';
 import 'package:guga_screen/profile_page/manager.dart';
 
+import 'data/catalog_product_data.dart';
 import 'data/home_page_promotion_data.dart';
 import 'manager.dart';
 
@@ -22,7 +24,7 @@ class _HomePageState extends ConsumerState<HomePage> {
     final homeManager = ref.watch(homeManagerProvider);
     final manager = ref.watch(profileManagerProvider);
     return Scaffold(
-      backgroundColor: Color(0xffE5E5E5),
+      backgroundColor: const Color(0xffE5E5E5),
       appBar: HomePageAppBar(manager.profilePageStateHolder.userAdress),
       body: SingleChildScrollView(
         child: Column(
@@ -31,7 +33,9 @@ class _HomePageState extends ConsumerState<HomePage> {
             Center(
               child: Container(
                   margin: const EdgeInsets.only(left: 30, right: 30),
-                  child: const TextField()),
+                  child: const TextField(
+                    decoration: InputDecoration(),
+                  )),
             ),
             const SizedBox(
               height: 27,
@@ -63,14 +67,19 @@ class _HomePageState extends ConsumerState<HomePage> {
                 },
               ),
             ),
-            const SizedBox(height: 23,),
+            const SizedBox(
+              height: 23,
+            ),
             Container(
               margin: const EdgeInsets.only(left: 13),
               child: const Text(
                 "Популярные Блюда",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
-              ),),
-            SizedBox(height: 12,),
+              ),
+            ),
+            const SizedBox(
+              height: 12,
+            ),
             Container(
               width: double.infinity,
               height: 215,
@@ -82,11 +91,39 @@ class _HomePageState extends ConsumerState<HomePage> {
                   return PopularFood(
                     imageAsset: popularFoodData[index].imageAsset,
                     title: popularFoodData[index].title,
-                    price: popularFoodData[index].price,);
+                    price: popularFoodData[index].price,
+                  );
                 },
               ),
             ),
-
+            const SizedBox(
+              height: 25,
+            ),
+            Container(
+              margin: const EdgeInsets.only(left: 31),
+              child: const Text(
+                'Каталог',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              child: ListView.builder(
+                //TODO Починить прокрутку в этом LISTVIEW
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                itemCount: catalogProductData.length,
+                itemBuilder: (context, int index) {
+                  return CatalogProduct(
+                    assetImage: catalogProductData[index].assetIamge,
+                    title: catalogProductData[index].title,
+                    subTitle: catalogProductData[index].subTitle,
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
