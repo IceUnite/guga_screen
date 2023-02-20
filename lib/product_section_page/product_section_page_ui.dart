@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guga_screen/home_page/data/catalog_product_data.dart';
 import 'package:guga_screen/home_page/manager.dart';
 import 'package:guga_screen/product_section_page/widgets/info_widget.dart';
@@ -11,8 +12,9 @@ class ProductSectionPage extends ConsumerStatefulWidget {
   @override
   ConsumerState<ProductSectionPage> createState() => _ProductSectionPageState();
 }
-List <bool> isFavourite = List.filled(10000, false);
-List <bool> isBasket = List.filled(10000, false);
+
+List<bool> isFavourite = List.filled(10000, false);
+List<bool> isBasket = List.filled(10000, false);
 
 class _ProductSectionPageState extends ConsumerState<ProductSectionPage> {
   @override
@@ -33,6 +35,26 @@ class _ProductSectionPageState extends ConsumerState<ProductSectionPage> {
                             homeManager.homePageStateHolder.catalogIndex]
                         .assetIamge,
                     fit: BoxFit.fill,
+                  ),
+                ),
+                Positioned(
+                  top: 46,
+                  left: 31,
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: const Color(0xff9EFFFFFF).withOpacity(0.62),
+                    ),
+                    child: Center(
+                      child: IconButton(
+                        icon: const Icon(Icons.arrow_back, color: Colors.black, size: 20,),
+                        onPressed: (){
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
                   ),
                 ),
                 const Positioned(
@@ -69,14 +91,18 @@ class _ProductSectionPageState extends ConsumerState<ProductSectionPage> {
             ),
             Container(
               child: ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 itemCount: 20,
                 itemBuilder: (context, int index) {
                   return ProductWidget(
-                    imageAsset: catalogProductData[homeManager.homePageStateHolder.catalogIndex].assetIamge,
-                    productName: catalogProductData[homeManager.homePageStateHolder.catalogIndex].title,
+                    imageAsset: catalogProductData[
+                            homeManager.homePageStateHolder.catalogIndex]
+                        .assetIamge,
+                    productName: catalogProductData[
+                            homeManager.homePageStateHolder.catalogIndex]
+                        .title,
                     index: index,
                     isFavourite: isFavourite,
                     isBasket: isBasket,

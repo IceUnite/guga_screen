@@ -8,6 +8,8 @@ class ProductSectionPageState with _$ProductSectionPageState {
   const factory ProductSectionPageState({
     required List<bool> isFavourite,
     required List<bool> isBasket,
+    // required List<List<bool>> isFavourite,
+    // required List<List<bool>> isBasket,
     required int selectedIndex,
   }) = _ProductSectionPageState;
 }
