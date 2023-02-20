@@ -5,8 +5,10 @@ import 'package:guga_screen/home_page/widgets/catalog_product.dart';
 import 'package:guga_screen/home_page/widgets/home_page_appbar.dart';
 import 'package:guga_screen/home_page/widgets/popular_food.dart';
 import 'package:guga_screen/home_page/widgets/promotion_widget.dart';
+import 'package:guga_screen/product_page/product_page_ui.dart';
 import 'package:guga_screen/profile_page/manager.dart';
 
+import '../components/widgets/bottom_navigation_bar.dart';
 import 'data/catalog_product_data.dart';
 import 'data/home_page_promotion_data.dart';
 import 'manager.dart';
@@ -26,6 +28,7 @@ class _HomePageState extends ConsumerState<HomePage> {
     return Scaffold(
       backgroundColor: const Color(0xffE5E5E5),
       appBar: HomePageAppBar(manager.profilePageStateHolder.userAdress),
+      bottomNavigationBar: GlobalNavigationBar(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,20 +112,19 @@ class _HomePageState extends ConsumerState<HomePage> {
             const SizedBox(
               height: 10,
             ),
-            Container(
-              child: ListView.builder(
-                //TODO Починить прокрутку в этом LISTVIEW
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                itemCount: catalogProductData.length,
-                itemBuilder: (context, int index) {
-                  return CatalogProduct(
-                    assetImage: catalogProductData[index].assetIamge,
-                    title: catalogProductData[index].title,
-                    subTitle: catalogProductData[index].subTitle,
-                  );
-                },
-              ),
+            ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: catalogProductData.length,
+              itemBuilder: (context, int index) {
+                return CatalogProduct(
+                  index: index,
+                  assetImage: catalogProductData[index].assetIamge,
+                  title: catalogProductData[index].title,
+                  subTitle: catalogProductData[index].subTitle,
+                );
+              },
             ),
           ],
         ),

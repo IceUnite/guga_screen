@@ -10,7 +10,7 @@ part 'home_page_state.freezed.dart';
 class HomePageState with _$HomePageState {
   const factory HomePageState({
     // required String phoneNumber,
-    required String userAdress,
+    required int catalogIndex,
   }) = _HomePageState;
 
 
@@ -25,15 +25,14 @@ class HomePageStateHolder extends StateNotifier<HomePageState> {
   HomePageStateHolder()
       : super(
     const HomePageState(
-      // phoneNumber: '+7 4991133630',
-       userAdress: 'ул.Гоголя, 2 проезд. Дом 85',
+      catalogIndex: 0,
     ),
   );
+  int get catalogIndex => state.catalogIndex;
 
-
-  // void setPhoneNumber(String phone) => state = state.copyWith(
-  //   phoneNumber: phone,
-  // );
+  void setCatalogIndex(int value) => state = state.copyWith(
+    catalogIndex: value,
+  );
   //
   // void setUserAdress(String adress) => state = state.copyWith(
   //   userAdress: adress,

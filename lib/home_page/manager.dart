@@ -21,6 +21,10 @@ class HomeManager {
   });
 
   void openProfilePage() => navigationManager.openProfilePage();
+  void openProductSectionPage() => navigationManager.openProductSectionPage();
+  void changeCurrentIndex(int value){
+    homePageStateHolder.setCatalogIndex(value);
+  }
 
 
 }

@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomePageState {
 // required String phoneNumber,
-  String get userAdress => throw _privateConstructorUsedError;
+  int get catalogIndex => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomePageStateCopyWith<HomePageState> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $HomePageStateCopyWith<$Res> {
           HomePageState value, $Res Function(HomePageState) then) =
       _$HomePageStateCopyWithImpl<$Res, HomePageState>;
   @useResult
-  $Res call({String userAdress});
+  $Res call({int catalogIndex});
 }
 
 /// @nodoc
@@ -46,13 +46,13 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userAdress = null,
+    Object? catalogIndex = null,
   }) {
     return _then(_value.copyWith(
-      userAdress: null == userAdress
-          ? _value.userAdress
-          : userAdress // ignore: cast_nullable_to_non_nullable
-              as String,
+      catalogIndex: null == catalogIndex
+          ? _value.catalogIndex
+          : catalogIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -65,7 +65,7 @@ abstract class _$$_HomePageStateCopyWith<$Res>
       __$$_HomePageStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userAdress});
+  $Res call({int catalogIndex});
 }
 
 /// @nodoc
@@ -79,13 +79,13 @@ class __$$_HomePageStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userAdress = null,
+    Object? catalogIndex = null,
   }) {
     return _then(_$_HomePageState(
-      userAdress: null == userAdress
-          ? _value.userAdress
-          : userAdress // ignore: cast_nullable_to_non_nullable
-              as String,
+      catalogIndex: null == catalogIndex
+          ? _value.catalogIndex
+          : catalogIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -93,15 +93,15 @@ class __$$_HomePageStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_HomePageState implements _HomePageState {
-  const _$_HomePageState({required this.userAdress});
+  const _$_HomePageState({required this.catalogIndex});
 
 // required String phoneNumber,
   @override
-  final String userAdress;
+  final int catalogIndex;
 
   @override
   String toString() {
-    return 'HomePageState(userAdress: $userAdress)';
+    return 'HomePageState(catalogIndex: $catalogIndex)';
   }
 
   @override
@@ -109,12 +109,12 @@ class _$_HomePageState implements _HomePageState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_HomePageState &&
-            (identical(other.userAdress, userAdress) ||
-                other.userAdress == userAdress));
+            (identical(other.catalogIndex, catalogIndex) ||
+                other.catalogIndex == catalogIndex));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userAdress);
+  int get hashCode => Object.hash(runtimeType, catalogIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -124,11 +124,11 @@ class _$_HomePageState implements _HomePageState {
 }
 
 abstract class _HomePageState implements HomePageState {
-  const factory _HomePageState({required final String userAdress}) =
+  const factory _HomePageState({required final int catalogIndex}) =
       _$_HomePageState;
 
   @override // required String phoneNumber,
-  String get userAdress;
+  int get catalogIndex;
   @override
   @JsonKey(ignore: true)
   _$$_HomePageStateCopyWith<_$_HomePageState> get copyWith =>
