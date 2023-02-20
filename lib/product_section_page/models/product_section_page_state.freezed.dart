@@ -16,8 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ProductSectionPageState {
-  List<bool> get isFavourite => throw _privateConstructorUsedError;
-  List<bool> get isBasket => throw _privateConstructorUsedError;
+// required List<bool> isFavourite,
+// required List<bool> isBasket,
+  List<List<bool>> get isFavourite => throw _privateConstructorUsedError;
+  List<List<bool>> get isBasket => throw _privateConstructorUsedError;
   int get selectedIndex => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +33,10 @@ abstract class $ProductSectionPageStateCopyWith<$Res> {
           $Res Function(ProductSectionPageState) then) =
       _$ProductSectionPageStateCopyWithImpl<$Res, ProductSectionPageState>;
   @useResult
-  $Res call({List<bool> isFavourite, List<bool> isBasket, int selectedIndex});
+  $Res call(
+      {List<List<bool>> isFavourite,
+      List<List<bool>> isBasket,
+      int selectedIndex});
 }
 
 /// @nodoc
@@ -56,11 +61,11 @@ class _$ProductSectionPageStateCopyWithImpl<$Res,
       isFavourite: null == isFavourite
           ? _value.isFavourite
           : isFavourite // ignore: cast_nullable_to_non_nullable
-              as List<bool>,
+              as List<List<bool>>,
       isBasket: null == isBasket
           ? _value.isBasket
           : isBasket // ignore: cast_nullable_to_non_nullable
-              as List<bool>,
+              as List<List<bool>>,
       selectedIndex: null == selectedIndex
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
@@ -77,7 +82,10 @@ abstract class _$$_ProductSectionPageStateCopyWith<$Res>
       __$$_ProductSectionPageStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<bool> isFavourite, List<bool> isBasket, int selectedIndex});
+  $Res call(
+      {List<List<bool>> isFavourite,
+      List<List<bool>> isBasket,
+      int selectedIndex});
 }
 
 /// @nodoc
@@ -100,11 +108,11 @@ class __$$_ProductSectionPageStateCopyWithImpl<$Res>
       isFavourite: null == isFavourite
           ? _value._isFavourite
           : isFavourite // ignore: cast_nullable_to_non_nullable
-              as List<bool>,
+              as List<List<bool>>,
       isBasket: null == isBasket
           ? _value._isBasket
           : isBasket // ignore: cast_nullable_to_non_nullable
-              as List<bool>,
+              as List<List<bool>>,
       selectedIndex: null == selectedIndex
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
@@ -117,23 +125,27 @@ class __$$_ProductSectionPageStateCopyWithImpl<$Res>
 
 class _$_ProductSectionPageState implements _ProductSectionPageState {
   const _$_ProductSectionPageState(
-      {required final List<bool> isFavourite,
-      required final List<bool> isBasket,
+      {required final List<List<bool>> isFavourite,
+      required final List<List<bool>> isBasket,
       required this.selectedIndex})
       : _isFavourite = isFavourite,
         _isBasket = isBasket;
 
-  final List<bool> _isFavourite;
+// required List<bool> isFavourite,
+// required List<bool> isBasket,
+  final List<List<bool>> _isFavourite;
+// required List<bool> isFavourite,
+// required List<bool> isBasket,
   @override
-  List<bool> get isFavourite {
+  List<List<bool>> get isFavourite {
     if (_isFavourite is EqualUnmodifiableListView) return _isFavourite;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_isFavourite);
   }
 
-  final List<bool> _isBasket;
+  final List<List<bool>> _isBasket;
   @override
-  List<bool> get isBasket {
+  List<List<bool>> get isBasket {
     if (_isBasket is EqualUnmodifiableListView) return _isBasket;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_isBasket);
@@ -177,14 +189,15 @@ class _$_ProductSectionPageState implements _ProductSectionPageState {
 
 abstract class _ProductSectionPageState implements ProductSectionPageState {
   const factory _ProductSectionPageState(
-      {required final List<bool> isFavourite,
-      required final List<bool> isBasket,
+      {required final List<List<bool>> isFavourite,
+      required final List<List<bool>> isBasket,
       required final int selectedIndex}) = _$_ProductSectionPageState;
 
+  @override // required List<bool> isFavourite,
+// required List<bool> isBasket,
+  List<List<bool>> get isFavourite;
   @override
-  List<bool> get isFavourite;
-  @override
-  List<bool> get isBasket;
+  List<List<bool>> get isBasket;
   @override
   int get selectedIndex;
   @override

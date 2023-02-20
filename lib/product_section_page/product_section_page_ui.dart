@@ -13,8 +13,24 @@ class ProductSectionPage extends ConsumerStatefulWidget {
   ConsumerState<ProductSectionPage> createState() => _ProductSectionPageState();
 }
 
-List<bool> isFavourite = List.filled(10000, false);
-List<bool> isBasket = List.filled(10000, false);
+List<List<bool>> isFavourite = [
+  List.filled(10000, false),
+  List.filled(10000, false),
+  List.filled(10000, false),
+  List.filled(10000, false),
+  List.filled(10000, false),
+  List.filled(10000, false),
+  List.filled(10000, false),
+];
+List<List<bool>> isBasket = [
+  List.filled(10000, false),
+  List.filled(10000, false),
+  List.filled(10000, false),
+  List.filled(10000, false),
+  List.filled(10000, false),
+  List.filled(10000, false),
+  List.filled(10000, false),
+];
 
 class _ProductSectionPageState extends ConsumerState<ProductSectionPage> {
   @override
@@ -49,8 +65,12 @@ class _ProductSectionPageState extends ConsumerState<ProductSectionPage> {
                     ),
                     child: Center(
                       child: IconButton(
-                        icon: const Icon(Icons.arrow_back, color: Colors.black, size: 20,),
-                        onPressed: (){
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: Colors.black,
+                          size: 20,
+                        ),
+                        onPressed: () {
                           Navigator.pop(context);
                         },
                       ),

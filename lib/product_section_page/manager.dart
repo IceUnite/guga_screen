@@ -19,17 +19,20 @@ class ProductSectionManager {
     required this.productSectionPageStateHolder,
     required this.navigationManager,
   });
-  List<bool> favouriteChangeState(List<bool> isNewFavourite, int index){
+  List<List<bool>> favouriteChangeState(List<List<bool>> isNewFavourite, int pageIndex, int widgetIndex){
 
-    isNewFavourite[index] = !isNewFavourite[index];
-    productSectionPageStateHolder.setSelectFavourite(isNewFavourite, index);
+    isNewFavourite[pageIndex][widgetIndex] = !isNewFavourite[pageIndex][widgetIndex];
+    print('id страницы $pageIndex');
+    print('id виджета $widgetIndex');
+    print('Значение ${isNewFavourite[pageIndex][widgetIndex]}');
+    productSectionPageStateHolder.setSelectFavourite(isNewFavourite, pageIndex);
     return isNewFavourite;
 
   }
-  List<bool> basketChangeState(List<bool> isNewBasket, int index){
+  List<List<bool>> basketChangeState(List<List<bool>> isNewBasket, int pageIndex, int widgetIndex){
 
-    isNewBasket[index] = !isNewBasket[index];
-    productSectionPageStateHolder.setSelectBasket(isNewBasket, index);
+    isNewBasket[pageIndex][widgetIndex] = !isNewBasket[pageIndex][widgetIndex];
+    productSectionPageStateHolder.setSelectBasket(isNewBasket, pageIndex);
     return isNewBasket;
 
   }

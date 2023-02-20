@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:guga_screen/home_page/manager.dart';
 import 'package:guga_screen/product_section_page/manager.dart';
 import 'package:guga_screen/product_section_page/models/product_section_page_state.dart';
 class ProductWidget extends ConsumerStatefulWidget {
@@ -8,8 +9,8 @@ class ProductWidget extends ConsumerStatefulWidget {
   final String productTitle = 'тесто, лук репчатый, кинза, соль, сушенная зира,черный перец...';
   final String price = '100 рублей';
   final int index;
-  List<bool> isFavourite;
-  List<bool> isBasket;
+  List<List<bool>> isFavourite;
+  List<List<bool>> isBasket;
 
   ProductWidget({
     required this.imageAsset,
@@ -28,8 +29,9 @@ class ProductWidget extends ConsumerStatefulWidget {
 class _ProductWidgetState extends ConsumerState<ProductWidget> {
   @override
   Widget build(BuildContext context) {
+    final homeManager = ref.watch(homeManagerProvider);
     final manager = ref.watch(productSectionManagerProvider);
-    final basketPageState = ref.watch(productSectionPageStateProvider);
+    final productSectionPageState = ref.watch(productSectionPageStateProvider);
     return Container(
       height: 160,
       decoration: const BoxDecoration(),
@@ -102,10 +104,12 @@ class _ProductWidgetState extends ConsumerState<ProductWidget> {
                           child: IconButton(
                               splashRadius: 14,
                               onPressed: () {
-                                widget.isFavourite = manager.favouriteChangeState(widget.isFavourite, widget.index);
+                                widget.isFavourite = manager.favouriteChangeState(widget.isFavourite,homeManager.homePageStateHolder.catalogIndex, widget.index);
+                                print(productSectionPageState.isFavourite[homeManager.homePageStateHolder.catalogIndex][widget.index]);
+                                print(1);
                               },
                               icon: Icon(Icons.favorite_border_outlined,
-                                  color: basketPageState.isFavourite[widget.index] == true
+                                  color: productSectionPageState.isFavourite[homeManager.homePageStateHolder.catalogIndex][widget.index] == true
                                       ? Colors.red
                                       : Colors.black))),
                       SizedBox(
@@ -113,11 +117,11 @@ class _ProductWidgetState extends ConsumerState<ProductWidget> {
                           child: IconButton(
                               splashRadius: 14,
                               onPressed: () {
-                                widget.isBasket = manager.basketChangeState(widget.isBasket, widget.index);
+                                widget.isBasket = manager.basketChangeState(widget.isBasket,homeManager.homePageStateHolder.catalogIndex, widget.index);
                               },
                               icon:  Icon(
                                   Icons.shopping_basket_outlined,
-                                  color: basketPageState.isBasket[widget.index] == true
+                                  color: productSectionPageState.isBasket[productSectionPageState.selectedIndex][widget.index] == true
                                       ? Colors.red
                                       : Colors.black
                               ))),
