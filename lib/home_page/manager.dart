@@ -24,7 +24,7 @@ class HomeManager {
   void openProductSectionPage() => navigationManager.openProductSectionPage();
   void changeCurrentIndex(int value){
     homePageStateHolder.setCatalogIndex(value);
-    print(homePageStateHolder.catalogIndex);
+    // print(homePageStateHolder.catalogIndex);
   }
 
 

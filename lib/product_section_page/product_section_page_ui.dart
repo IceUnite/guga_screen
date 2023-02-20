@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:guga_screen/components/widgets/bottom_navigation_bar.dart';
 import 'package:guga_screen/home_page/data/catalog_product_data.dart';
 import 'package:guga_screen/home_page/manager.dart';
 import 'package:guga_screen/product_section_page/widgets/info_widget.dart';
@@ -21,8 +22,10 @@ List<List<bool>> isFavourite = [
   List.filled(10000, false),
   List.filled(10000, false),
   List.filled(10000, false),
+  List.filled(10000, false),
 ];
 List<List<bool>> isBasket = [
+  List.filled(10000, false),
   List.filled(10000, false),
   List.filled(10000, false),
   List.filled(10000, false),
@@ -37,6 +40,7 @@ class _ProductSectionPageState extends ConsumerState<ProductSectionPage> {
   Widget build(BuildContext context) {
     final homeManager = ref.watch(homeManagerProvider);
     return Scaffold(
+      bottomNavigationBar: GlobalNavigationBar(),
       appBar: null,
       body: SingleChildScrollView(
         child: Column(
@@ -109,26 +113,25 @@ class _ProductSectionPageState extends ConsumerState<ProductSectionPage> {
                     ))
               ],
             ),
-            Container(
-              child: ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                itemCount: 20,
-                itemBuilder: (context, int index) {
-                  return ProductWidget(
-                    imageAsset: catalogProductData[
-                            homeManager.homePageStateHolder.catalogIndex]
-                        .assetIamge,
-                    productName: catalogProductData[
-                            homeManager.homePageStateHolder.catalogIndex]
-                        .title,
-                    index: index,
-                    isFavourite: isFavourite,
-                    isBasket: isBasket,
-                  );
-                },
-              ),
+            ListView.builder(
+              padding: EdgeInsets.all(0.0),
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: 10,
+              itemBuilder: (context, int index) {
+                return ProductWidget(
+                  imageAsset: catalogProductData[
+                          homeManager.homePageStateHolder.catalogIndex]
+                      .assetIamge,
+                  productName: catalogProductData[
+                          homeManager.homePageStateHolder.catalogIndex]
+                      .title,
+                  index: index,
+                  isFavourite: isFavourite,
+                  isBasket: isBasket,
+                );
+              },
             )
             // ListView.builder()
           ],

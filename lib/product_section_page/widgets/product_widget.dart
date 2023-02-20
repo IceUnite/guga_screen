@@ -95,27 +95,26 @@ class _ProductWidgetState extends ConsumerState<ProductWidget> {
                   ),
                 ),
                 SizedBox(
-                  width: 60,
-                  height: 20,
+                  width: 80,
+                  height: 40,
                   child: Row(
                     children: [
                       SizedBox(
-                          width: 30,
+                          width: 40,
                           child: IconButton(
-                              splashRadius: 14,
+                              splashRadius: 13,
                               onPressed: () {
                                 widget.isFavourite = manager.favouriteChangeState(widget.isFavourite,homeManager.homePageStateHolder.catalogIndex, widget.index);
-                                print(productSectionPageState.isFavourite[homeManager.homePageStateHolder.catalogIndex][widget.index]);
-                                print(1);
+                                 // print(productSectionPageState.isFavourite[homeManager.homePageStateHolder.catalogIndex][widget.index]);
                               },
                               icon: Icon(Icons.favorite_border_outlined,
                                   color: productSectionPageState.isFavourite[homeManager.homePageStateHolder.catalogIndex][widget.index] == true
                                       ? Colors.red
                                       : Colors.black))),
                       SizedBox(
-                          width: 30,
+                          width: 40,
                           child: IconButton(
-                              splashRadius: 14,
+                              splashRadius: 13,
                               onPressed: () {
                                 widget.isBasket = manager.basketChangeState(widget.isBasket,homeManager.homePageStateHolder.catalogIndex, widget.index);
                               },

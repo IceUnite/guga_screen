@@ -22,9 +22,10 @@ class ProductSectionManager {
   List<List<bool>> favouriteChangeState(List<List<bool>> isNewFavourite, int pageIndex, int widgetIndex){
 
     isNewFavourite[pageIndex][widgetIndex] = !isNewFavourite[pageIndex][widgetIndex];
-    print('id страницы $pageIndex');
-    print('id виджета $widgetIndex');
-    print('Значение ${isNewFavourite[pageIndex][widgetIndex]}');
+    //debugPrint
+    // print('id страницы $pageIndex');
+    // print('id виджета $widgetIndex');
+    // print('Значение ${isNewFavourite[pageIndex][widgetIndex]}');
     productSectionPageStateHolder.setSelectFavourite(isNewFavourite, pageIndex);
     return isNewFavourite;
 

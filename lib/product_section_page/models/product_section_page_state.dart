@@ -32,8 +32,10 @@ class ProductSectionPageStateHolder
               List.filled(10000, false),
               List.filled(10000, false),
               List.filled(10000, false),
+              List.filled(10000, false),
             ],
             isBasket: [
+              List.filled(10000, false),
               List.filled(10000, false),
               List.filled(10000, false),
               List.filled(10000, false),
