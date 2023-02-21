@@ -19,7 +19,8 @@ class PromotionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 95, height: 95,
+      width: 95,
+      height: 95,
       margin: const EdgeInsets.only(right: 10),
       decoration: BoxDecoration(
         color: widgetColor,
@@ -52,7 +53,19 @@ class PromotionWidget extends StatelessWidget {
                 ),
               ),
             ),
-            child: Transform.rotate(angle: -pi/6,child: Center(child: Text(subTitle, style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: Colors.white),))),
+            child: Transform.rotate(
+              angle: -pi / 6,
+              child: Center(
+                child: Text(
+                  subTitle,
+                  style: const TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),

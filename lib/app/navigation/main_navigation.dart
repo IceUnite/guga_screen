@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guga_screen/basket_page/basket_page_ui.dart';
+import 'package:guga_screen/favourite_page/favourite_page_ui.dart';
 import 'package:guga_screen/home_page/home_page_ui.dart';
 import 'package:guga_screen/map_page/map_page_ui.dart';
 import 'package:guga_screen/product_section_page/product_section_page_ui.dart';
@@ -18,6 +19,7 @@ abstract class AppRoutesKeys {
   static const profilepage = 'profile_page';
   static const homepage = 'home_page';
   static const productsectionpage = 'product_section_page';
+  static const favouritepage = 'favourite_page';
 
 }
 
@@ -32,5 +34,6 @@ class MainNavigation {
     AppRoutesKeys.profilepage: (context) => const ProfilePage(),
     AppRoutesKeys.homepage: (context) => const HomePage(),
     AppRoutesKeys.productsectionpage: (context) => const ProductSectionPage(),
+    AppRoutesKeys.favouritepage: (context) => const FavouritePage(),
   };
 }

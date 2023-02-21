@@ -34,7 +34,11 @@ class _ProductWidgetState extends ConsumerState<ProductWidget> {
     final basketPageState = ref.watch(basketPageStateProvider);
     return Container(
       height: 160,
-      decoration: const BoxDecoration(),
+      width: double.infinity,
+      // margin: EdgeInsets.only(bottom: 10),
+      decoration: const BoxDecoration(
+        color: Colors.white
+      ),
       child: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(

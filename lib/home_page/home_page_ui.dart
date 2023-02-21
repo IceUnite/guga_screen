@@ -26,7 +26,7 @@ class _HomePageState extends ConsumerState<HomePage> {
     return Scaffold(
       backgroundColor: const Color(0xffE5E5E5),
       appBar: HomePageAppBar(adressState.userAdress),
-      bottomNavigationBar: GlobalNavigationBar(),
+      bottomNavigationBar: NavBar(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

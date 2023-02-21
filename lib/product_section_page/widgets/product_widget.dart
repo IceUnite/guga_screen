@@ -34,7 +34,10 @@ class _ProductWidgetState extends ConsumerState<ProductWidget> {
     final productSectionPageState = ref.watch(productSectionPageStateProvider);
     return Container(
       height: 160,
-      decoration: const BoxDecoration(),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(

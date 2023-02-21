@@ -37,5 +37,6 @@ class BasketManager {
     basketPageStateHolder.setSelectTrash(isNewTrash, index);
     return isNewTrash;
   }
+  void openProfilePage() => navigationManager.openProfilePage();
 
 }

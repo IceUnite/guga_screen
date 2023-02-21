@@ -17,7 +17,6 @@ TextEditingController phoneController = TextEditingController();
 TextEditingController adressController = TextEditingController();
 
 class _ProfilePageState extends ConsumerState<ProfilePage> {
-
   @override
   Widget build(BuildContext context) {
     final manager = ref.watch(profileManagerProvider);
@@ -87,7 +86,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
               height: 40,
             ),
             const ProfileAchievment(
-              number: 3,
+              number: 2,
             ),
             const SizedBox(
               height: 20,
@@ -120,18 +119,17 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     height: 4,
                   ),
                   SizedBox(
+
                     height: 30,
                     child: TextField(
-                      onSubmitted: (value){
+                      onSubmitted: (value) {
                         manager.changeUserPhone(Phone: value);
-                        print(manager.profilePageStateHolder.phoneNumber);
-                        },
+                        // print(manager.profilePageStateHolder.phoneNumber);
+                      },
                       controller: phoneController,
                       decoration: InputDecoration(
-                        //TODO Сделать перерисовку
-                        hintText: state.phoneNumber
-                      ),
-
+                          //TODO Сделать перерисовку
+                          hintText: state.phoneNumber),
                     ),
                   ),
                   const SizedBox(
@@ -148,13 +146,12 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   SizedBox(
                     height: 30,
                     child: TextField(
-                      onSubmitted: (value){
+                      onSubmitted: (value) {
                         manager.changeUserAdress(Adress: value);
-                        },
+                      },
                       decoration: InputDecoration(
-                        //TODO Сделать перерисовку
-                          hintText: state.userAdress
-                      ),
+                          //TODO Сделать перерисовку
+                          hintText: state.userAdress),
                       controller: adressController,
                     ),
                   ),
@@ -165,9 +162,13 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     onTap: () {},
                     child: Container(
                       decoration: const BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  color: Color(0xffFF3030), width: 1))),
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Color(0xffFF3030),
+                            width: 1,
+                          ),
+                        ),
+                      ),
                       height: 18,
                       child: const Text(
                         "Выйти из аккаунта",
