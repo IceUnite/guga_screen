@@ -68,9 +68,9 @@ class _BasketPageState extends ConsumerState<BasketPage> {
     // final manager = ref.watch(basketManagerProvider);
     // final basketPageState = ref.watch(basketPageStateProvider);
     return Scaffold(
-      bottomNavigationBar: NavBar(),
-      backgroundColor: Colors.white,
-      appBar: BasketAppBar(),
+      // bottomNavigationBar: NavBar(),
+      // backgroundColor: Colors.white,
+      // appBar: BasketAppBar(),
       body: Column(
         children: [
           Container(

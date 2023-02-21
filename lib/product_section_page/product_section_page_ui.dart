@@ -141,7 +141,7 @@ class _ProductSectionPageState extends ConsumerState<ProductSectionPage> {
   Widget build(BuildContext context) {
     final homeManager = ref.watch(homeManagerProvider);
     return Scaffold(
-      bottomNavigationBar: const NavBar(),
+      // bottomNavigationBar:  NavBar(),
       appBar: null,
       body: SafeArea(
         top: false,

@@ -66,11 +66,13 @@ class _BasketPageState extends ConsumerState<FavouritePage> {
   Widget build(BuildContext context) {
     // final manager = ref.watch(basketManagerProvider);
     // final basketPageState = ref.watch(basketPageStateProvider);
-    return Scaffold(
-      bottomNavigationBar: NavBar(),
-      backgroundColor: Colors.white,
-      appBar: BasketAppBar(),
-      body: SingleChildScrollView(
+    return
+      // Scaffold(
+      // bottomNavigationBar: NavBar(),
+      // backgroundColor: Colors.white,
+      // appBar: BasketAppBar(),
+      // body:
+      SingleChildScrollView(
         child: ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
@@ -87,7 +89,7 @@ class _BasketPageState extends ConsumerState<FavouritePage> {
             );
           },
         ),
-      ),
+      // ),
     );
   }
 }

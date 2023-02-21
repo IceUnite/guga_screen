@@ -6,7 +6,7 @@ import '../manager.dart';
 HomePageAppBar(String adress) {
   return AppBar(
     elevation: 0,
-    backgroundColor: Color(0xffE5E5E5),
+    backgroundColor: Color(0xffFFFFFF),
     title: Text(
       adress,
       style: TextStyle(color: Colors.black),

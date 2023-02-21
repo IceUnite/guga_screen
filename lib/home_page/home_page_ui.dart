@@ -23,119 +23,122 @@ class _HomePageState extends ConsumerState<HomePage> {
   Widget build(BuildContext context) {
     final adressState = ref.watch(profilePageStateProvider);
     //final manager = ref.watch(profileManagerProvider);
+    // return Scaffold(
+    //   backgroundColor: const Color(0xffE5E5E5),
+    //   appBar: HomePageAppBar(adressState.userAdress),
+    //   bottomNavigationBar: NavBar(),
+    //   body:
     return Scaffold(
-      backgroundColor: const Color(0xffE5E5E5),
-      appBar: HomePageAppBar(adressState.userAdress),
-      bottomNavigationBar: NavBar(),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 10,),
-            Center(
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.white
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 10,),
+              Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white
+                  ),
+                    margin: const EdgeInsets.only(left: 30, right: 30),
+                    child: const TextField(
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        hintText: 'Поиск блюд',
+                        border: InputBorder.none
+                      ),
+                    )),
+              ),
+              const SizedBox(
+                height: 27,
+              ),
+              Container(
+                margin: const EdgeInsets.only(left: 31),
+                child: const Text(
+                  'Акции',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
                 ),
-                  margin: const EdgeInsets.only(left: 30, right: 30),
-                  child: const TextField(
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                      hintText: 'Поиск блюд',
-                      border: InputBorder.none
-                    ),
-                  )),
-            ),
-            const SizedBox(
-              height: 27,
-            ),
-            Container(
-              margin: const EdgeInsets.only(left: 31),
-              child: const Text(
-                'Акции',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
               ),
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            Container(
-              width: double.infinity,
-              height: 95,
-              margin: const EdgeInsets.only(left: 31),
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: promotionData.length,
+              const SizedBox(
+                height: 5,
+              ),
+              Container(
+                width: double.infinity,
+                height: 95,
+                margin: const EdgeInsets.only(left: 31),
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: promotionData.length,
+                  itemBuilder: (context, int index) {
+                    return PromotionWidget(
+                      title: promotionData[index].title,
+                      subTitle: promotionData[index].subTitle,
+                      widgetColor: promotionData[index].widgetColor,
+                      widgetSubColor: promotionData[index].widgetSubColor,
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 23,
+              ),
+              Container(
+                margin: const EdgeInsets.only(left: 13),
+                child: const Text(
+                  "Популярные Блюда",
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+                ),
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              Container(
+                width: double.infinity,
+                height: 215,
+                margin: const EdgeInsets.only(left: 13),
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: popularFoodData.length,
+                  itemBuilder: (context, int index) {
+                    return PopularFood(
+                      imageAsset: popularFoodData[index].imageAsset,
+                      title: popularFoodData[index].title,
+                      price: popularFoodData[index].price,
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              Container(
+                margin: const EdgeInsets.only(left: 31),
+                child: const Text(
+                  'Каталог',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                itemCount: catalogProductData.length,
                 itemBuilder: (context, int index) {
-                  return PromotionWidget(
-                    title: promotionData[index].title,
-                    subTitle: promotionData[index].subTitle,
-                    widgetColor: promotionData[index].widgetColor,
-                    widgetSubColor: promotionData[index].widgetSubColor,
+                  return CatalogProduct(
+                    index: index,
+                    assetImage: catalogProductData[index].assetIamge,
+                    title: catalogProductData[index].title,
+                    subTitle: catalogProductData[index].subTitle,
                   );
                 },
               ),
-            ),
-            const SizedBox(
-              height: 23,
-            ),
-            Container(
-              margin: const EdgeInsets.only(left: 13),
-              child: const Text(
-                "Популярные Блюда",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
-              ),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            Container(
-              width: double.infinity,
-              height: 215,
-              margin: const EdgeInsets.only(left: 13),
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: popularFoodData.length,
-                itemBuilder: (context, int index) {
-                  return PopularFood(
-                    imageAsset: popularFoodData[index].imageAsset,
-                    title: popularFoodData[index].title,
-                    price: popularFoodData[index].price,
-                  );
-                },
-              ),
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            Container(
-              margin: const EdgeInsets.only(left: 31),
-              child: const Text(
-                'Каталог',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              itemCount: catalogProductData.length,
-              itemBuilder: (context, int index) {
-                return CatalogProduct(
-                  index: index,
-                  assetImage: catalogProductData[index].assetIamge,
-                  title: catalogProductData[index].title,
-                  subTitle: catalogProductData[index].subTitle,
-                );
-              },
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
     );
+    // );
   }
 }
