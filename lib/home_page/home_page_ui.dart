@@ -6,6 +6,7 @@ import 'package:guga_screen/home_page/widgets/home_page_appbar.dart';
 import 'package:guga_screen/home_page/widgets/popular_food.dart';
 import 'package:guga_screen/home_page/widgets/promotion_widget.dart';
 import 'package:guga_screen/profile_page/manager.dart';
+import 'package:guga_screen/profile_page/models/profile_page_state.dart';
 import '../components/widgets/bottom_navigation_bar.dart';
 import 'data/catalog_product_data.dart';
 import 'data/home_page_promotion_data.dart';
@@ -20,11 +21,11 @@ class HomePage extends ConsumerStatefulWidget {
 class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
-    // final homeManager = ref.watch(homeManagerProvider);
-    final manager = ref.watch(profileManagerProvider);
+    final adressState = ref.watch(profilePageStateProvider);
+    //final manager = ref.watch(profileManagerProvider);
     return Scaffold(
       backgroundColor: const Color(0xffE5E5E5),
-      appBar: HomePageAppBar(manager.profilePageStateHolder.userAdress),
+      appBar: HomePageAppBar(adressState.userAdress),
       bottomNavigationBar: GlobalNavigationBar(),
       body: SingleChildScrollView(
         child: Column(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guga_screen/profile_page/manager.dart';
+import 'package:guga_screen/profile_page/models/profile_page_state.dart';
 import 'Widgets/achievment.dart';
 import 'Widgets/profile_appbar.dart';
 
@@ -20,6 +21,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final manager = ref.watch(profileManagerProvider);
+    final state = ref.watch(profilePageStateProvider);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: ProfileAppBar(),
@@ -127,7 +129,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                       controller: phoneController,
                       decoration: InputDecoration(
                         //TODO Сделать перерисовку
-                        hintText: manager.profilePageStateHolder.phoneNumber
+                        hintText: state.phoneNumber
                       ),
 
                     ),
@@ -146,12 +148,12 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   SizedBox(
                     height: 30,
                     child: TextField(
-                      onChanged: (value){
+                      onSubmitted: (value){
                         manager.changeUserAdress(Adress: value);
                         },
                       decoration: InputDecoration(
                         //TODO Сделать перерисовку
-                          hintText: manager.profilePageStateHolder.userAdress
+                          hintText: state.userAdress
                       ),
                       controller: adressController,
                     ),

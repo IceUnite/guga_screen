@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 GlobalNavigationBar() {
-  int selectedpage = 0;
+  int currentIndex = 3;
   return Container(
     clipBehavior: Clip.antiAlias,
     decoration: const BoxDecoration(
@@ -13,34 +13,38 @@ GlobalNavigationBar() {
       ),
     ),
     child: BottomNavigationBar(
+      // iconSize: 100,
       showSelectedLabels: false,
       showUnselectedLabels: false,
-      currentIndex: selectedpage,
+      type: BottomNavigationBarType.fixed,
+      currentIndex: currentIndex,
+      // onTap: (index) => setState(()=> currentIndex = index),
+
       //TODO сделать навигацию и интерфейс
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: selectedpage == 0
+          icon: currentIndex == 0
               ? SvgPicture.asset('assets/icons/navigation_active0.svg')
               : SvgPicture.asset('assets/icons/navigation0.svg'),
           label: 'home',
         ),
         BottomNavigationBarItem(
-          icon: selectedpage == 1
+          icon: currentIndex == 1
               ? SvgPicture.asset('assets/icons/navigation_active1.svg')
               : SvgPicture.asset('assets/icons/navigation1.svg'),
           label: 'home',
         ),
         BottomNavigationBarItem(
-          icon: selectedpage == 2
+          icon: currentIndex == 2
               ? SvgPicture.asset('assets/icons/navigation_active2.svg')
               : SvgPicture.asset('assets/icons/navigation2.svg'),
           label: 'home',
         ),
         BottomNavigationBarItem(
-          icon: selectedpage == 3
+          icon: currentIndex == 3
               ? SvgPicture.asset('assets/icons/navigation_active3.svg')
               : SvgPicture.asset('assets/icons/navigation3.svg'),
-          label: 'home',
+           label: 'home',
         ),
       ],
       // currentIndex: _selectedIndex,

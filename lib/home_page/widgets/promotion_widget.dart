@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class PromotionWidget extends StatelessWidget {
@@ -18,7 +20,7 @@ class PromotionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 95, height: 95,
-      margin: EdgeInsets.only(right: 10),
+      margin: const EdgeInsets.only(right: 10),
       decoration: BoxDecoration(
         color: widgetColor,
         borderRadius: BorderRadius.circular(10),
@@ -50,7 +52,7 @@ class PromotionWidget extends StatelessWidget {
                 ),
               ),
             ),
-            child: Center(child: Text(subTitle, style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),)),
+            child: Transform.rotate(angle: -pi/6,child: Center(child: Text(subTitle, style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: Colors.white),))),
           ),
         ],
       ),
