@@ -78,6 +78,7 @@ class _BasketPageState extends ConsumerState<FavouritePage> {
           shrinkWrap: true,
           itemCount: Info.length,
           itemBuilder: (context, int index) {
+            //TODO переделать иконки на виджете
             return ProductWidget(
               imageAsset: Info[index].imageAsset,
               productName: Info[index].productName,

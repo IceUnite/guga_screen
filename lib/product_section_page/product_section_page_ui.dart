@@ -1,17 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:guga_screen/components/widgets/bottom_navigation_bar.dart';
 import 'package:guga_screen/home_page/data/catalog_product_data.dart';
 import 'package:guga_screen/home_page/manager.dart';
 import 'package:guga_screen/product_section_page/widgets/info_widget.dart';
 import 'package:guga_screen/product_section_page/widgets/product_widget.dart';
 
+// class _SliverAppBarDelegateContainer extends SliverPersistentHeaderDelegate{
+//
+//   double minHeight = 20;
+//   double maxHeight = 20;
+//
+//   @override
+//   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+//     return Container(
+//       height: 20,
+//       width: MediaQuery.of(context).size.width,
+//       decoration: const BoxDecoration(
+//         color: Colors.orange,
+//         borderRadius: BorderRadius.only(
+//             topRight: Radius.circular(20),
+//             topLeft: Radius.circular(20)),
+//       ),
+//     );
+//   }
+//
+//   @override
+//   double get maxExtent => maxHeight;
+//
+//   @override
+//   double get minExtent => minHeight;
+//
+//   @override
+//   bool shouldRebuild(_SliverAppBarDelegateContainer oldDelegate) {
+//     return minHeight != oldDelegate.maxExtent ||
+//         maxHeight != oldDelegate.minExtent;
+//   }
+//
+//
+//
+// }
+
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   double minHeight = 200;
-  double maxHeight = 300;
-  WidgetRef ref ;
-  late OverlayEntry sticky;
-  GlobalKey stickyKey = GlobalKey();
+  double maxHeight = 320;
+  WidgetRef ref;
+
   _SliverAppBarDelegate({required this.ref});
 
   @override
@@ -19,7 +52,6 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
 
   @override
   double get maxExtent => maxHeight;
-
 
   @override
   Widget build(
@@ -29,14 +61,14 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   ) {
     final homeManager = ref.watch(homeManagerProvider);
     return Stack(children: [
-      Container(
+      SizedBox(
         height: 320,
         width: double.infinity,
         child: FittedBox(
-          fit: BoxFit.fill,
+          fit: BoxFit.cover,
           child: Image.asset(
-              catalogProductData[homeManager.homePageStateHolder.catalogIndex].assetIamge
-          ),
+              catalogProductData[homeManager.homePageStateHolder.catalogIndex]
+                  .assetIamge),
         ),
       ),
       Positioned(
@@ -72,7 +104,7 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
           assetIcon: 'assets/icons/prigotovlenie.svg',
         ),
       ),
-       const Positioned(
+      const Positioned(
         top: 210,
         left: 201,
         child: InfoWidget(
@@ -81,23 +113,22 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
           assetIcon: 'assets/icons/dostavka.svg',
         ),
       ),
-      Positioned(
-          top: 305,
-          child: Container(
-            height: 20,
-            width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(20),
-                  topLeft: Radius.circular(20)),
-            ),
-          )),
+      // Positioned(
+      //     top: 305,
+      //     child: Container(
+      //       height: 20,
+      //       width: MediaQuery.of(context).size.width,
+      //       decoration: const BoxDecoration(
+      //         color: Colors.white,
+      //         borderRadius: BorderRadius.only(
+      //             topRight: Radius.circular(20),
+      //             topLeft: Radius.circular(20)),
+      //       ),
+      //     )),
       // Positioned(top: 280, child: Container(height:20,width: MediaQuery. of(context). size. width , decoration: const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(
       //   topLeft: Radius.circular(20),
       //   topRight: Radius.circular(20),
       // )),))
-
     ]);
   }
 
@@ -151,8 +182,15 @@ class _ProductSectionPageState extends ConsumerState<ProductSectionPage> {
             SliverPersistentHeader(
               pinned: true,
               floating: true,
-              delegate: _SliverAppBarDelegate(ref: ref, ),
+              delegate: _SliverAppBarDelegate(
+                ref: ref,
+              ),
             ),
+            // SliverPersistentHeader(
+            //   pinned: true,
+            //   floating: true,
+            //   delegate: _SliverAppBarDelegateContainer(),
+            // ),
             SliverList(
               delegate: SliverChildListDelegate(
                 [

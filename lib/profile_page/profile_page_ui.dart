@@ -128,7 +128,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                       },
                       controller: phoneController,
                       decoration: InputDecoration(
-                          //TODO Сделать перерисовку
                           hintText: state.phoneNumber),
                     ),
                   ),
@@ -150,7 +149,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         manager.changeUserAdress(Adress: value);
                       },
                       decoration: InputDecoration(
-                          //TODO Сделать перерисовку
                           hintText: state.userAdress),
                       controller: adressController,
                     ),

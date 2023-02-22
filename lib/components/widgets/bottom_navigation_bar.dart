@@ -16,15 +16,17 @@ class NavBar extends StatefulWidget {
 }
 class _NavBar extends State<NavBar> {
   final screens = [
-    HomePage(),
-    FavouritePage(),
-    BasketPage(),
+    const HomePage(),
+    const FavouritePage(),
+    const BasketPage(),
   ];
   @override
   int currentIndex = 0;
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: currentIndex == 0
+        ?Color(0xffF5F5F5)
+        :Colors.white,
       appBar: HomePageAppBar('AppBar'),
       body: screens[currentIndex],
       bottomNavigationBar: Container(
@@ -35,43 +37,50 @@ class _NavBar extends State<NavBar> {
             topRight: Radius.circular(20),
           ),
         ),
-        child: BottomNavigationBar(
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          type: BottomNavigationBarType.fixed,
-          currentIndex: currentIndex,
-          onTap: (index) => setState(() => currentIndex = index),
-
-          //TODO сделать навигацию и интерфейс
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: currentIndex == 0
-                  ? SvgPicture.asset('assets/icons/navigation_active0.svg')
-                  : SvgPicture.asset('assets/icons/navigation0.svg'),
-              label: 'home',
+        child: Container(
+          clipBehavior: Clip.antiAlias,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
             ),
-            BottomNavigationBarItem(
-              icon: currentIndex == 1
-                  ? SvgPicture.asset('assets/icons/navigation_active1.svg')
-                  : SvgPicture.asset('assets/icons/navigation1.svg'),
-              label: 'home',
-            ),
-            BottomNavigationBarItem(
-              icon: currentIndex == 2
-                  ? SvgPicture.asset('assets/icons/navigation_active2.svg')
-                  : SvgPicture.asset('assets/icons/navigation2.svg'),
-              label: 'home',
-            ),
-            // BottomNavigationBarItem(
-            //   icon: currentIndex == 3
-            //       ? SvgPicture.asset('assets/icons/navigation_active3.svg')
-            //       : SvgPicture.asset('assets/icons/navigation3.svg'),
-            //   label: 'home',
-            // ),
-          ],
-          // currentIndex: _selectedIndex,
-          // selectedItemColor: Colors.amber[800],
-          // onTap: _onItemTapped,
+          ),
+          child: BottomNavigationBar(
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            type: BottomNavigationBarType.fixed,
+            currentIndex: currentIndex,
+            onTap: (index) => setState(() => currentIndex = index),
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: currentIndex == 0
+                    ? SvgPicture.asset('assets/icons/navigation_active0.svg')
+                    : SvgPicture.asset('assets/icons/navigation0.svg'),
+                label: 'home',
+              ),
+              BottomNavigationBarItem(
+                icon: currentIndex == 1
+                    ? SvgPicture.asset('assets/icons/navigation_active1.svg')
+                    : SvgPicture.asset('assets/icons/navigation1.svg'),
+                label: 'home',
+              ),
+              BottomNavigationBarItem(
+                icon: currentIndex == 2
+                    ? SvgPicture.asset('assets/icons/navigation_active2.svg')
+                    : SvgPicture.asset('assets/icons/navigation2.svg'),
+                label: 'home',
+              ),
+              // BottomNavigationBarItem(
+              //   icon: currentIndex == 3
+              //       ? SvgPicture.asset('assets/icons/navigation_active3.svg')
+              //       : SvgPicture.asset('assets/icons/navigation3.svg'),
+              //   label: 'home',
+              // ),
+            ],
+            // currentIndex: _selectedIndex,
+            // selectedItemColor: Colors.amber[800],
+            // onTap: _onItemTapped,
+          ),
         ),
       ),
     );
@@ -100,7 +109,6 @@ class _NavBar extends State<NavBar> {
 //         //print(currentIndex);
 //       },
 //
-//       //TODO сделать навигацию и интерфейс
 //       items: <BottomNavigationBarItem>[
 //         BottomNavigationBarItem(
 //           icon: currentIndex == 0
